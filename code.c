@@ -79,10 +79,17 @@ struct Graph* createGraph(int V, int E)
       }
       printf("OUTPUT: ");
       printf("\n Vertex\t  Distance\tPath");
-      display(dist, V, parent);
-      // printpath(parent, V);
+   
+  int destination;
+	printf("\n Enter Destination vertex: ");
+	scanf("%d",&destination);
+	path(destination,parent,source);
+      
+   //display(dist, V, parent);
+   // printpath(parent, V);
  }
- void printpath(int parent[], int x)
+ 
+/*void printpath(int parent[], int x)
   {
 
     if (parent[x]==0)
@@ -90,9 +97,22 @@ struct Graph* createGraph(int V, int E)
     printpath(parent, parent[x]);
  
     printf("%d ", x);
-  }
+  }*/
 
-  void display(int arr[], int size, int parent[]) 
+int path(int destination, int parent[], int source){
+	if(destination==source){
+	printf("%d <-- ",destination);
+	return 0;
+	}
+	if(destination!=source){
+		printf("%d <-- ",destination);
+		return(path(parent[destination-1],parent,source));
+	}
+}
+
+
+
+ /* void display(int arr[], int size, int parent[]) 
   {
     int i;
     for (i = 0; i < size; i++)
@@ -102,7 +122,7 @@ struct Graph* createGraph(int V, int E)
     }  
   printf("\n");
   } 
-
+*/
 int main()
 {
   int V,E; 
